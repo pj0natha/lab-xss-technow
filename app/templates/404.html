@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>TechNow - Pagina nao encontrada</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>TechNow</h1>
+        <nav>
+            <a href="/">Noticias</a>
+            <a href="/contato">Contato</a>
+        </nav>
+    </header>
+    <main>
+        <div class="detalhe">
+            <h2>Pagina nao encontrada</h2>
+            <p>O caminho solicitado nao existe: {{ caminho | safe }}</p>
+            <p><a href="/">Voltar para a pagina inicial</a></p>
+        </div>
+    </main>
+</body>
+</html>

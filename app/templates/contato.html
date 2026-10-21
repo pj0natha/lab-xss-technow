@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>TechNow - Contato</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>TechNow</h1>
+        <nav>
+            <a href="/">Noticias</a>
+            <a href="/contato">Contato</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Fale com a redacao</h2>
+        <form action="/contato" method="post" class="contato-form">
+            <input type="text" name="nome" placeholder="Seu nome" required>
+            <textarea name="mensagem" placeholder="Sua mensagem" rows="3" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <h3>Mensagens recebidas</h3>
+        {% for m in mensagens %}
+        <div class="mensagem-contato">
+            <p class="autor">{{ m.nome | safe }}</p>
+            <p>{{ m.mensagem | safe }}</p>
+        </div>
+        {% else %}
+        <p>Nenhuma mensagem ainda.</p>
+        {% endfor %}
+    </main>
+</body>
+</html>

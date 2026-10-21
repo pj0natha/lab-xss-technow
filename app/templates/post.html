@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>TechNow - {{ post.titulo }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>TechNow</h1>
+        <nav>
+            <a href="/">Noticias</a>
+            <a href="/contato">Contato</a>
+        </nav>
+    </header>
+    <main>
+        <div class="detalhe">
+            <p class="categoria"><a href="/categoria/{{ post.categoria }}">{{ post.categoria }}</a></p>
+            <h2>{{ post.titulo }}</h2>
+            <p>{{ post.corpo }}</p>
+        </div>
+
+        <h3>Comentarios</h3>
+        {% for comentario in comentarios %}
+        <div class="comentario">
+            <p class="autor">{{ comentario.autor | safe }}</p>
+            <p>{{ comentario.corpo | safe }}</p>
+        </div>
+        {% else %}
+        <p>Nenhum comentario ainda.</p>
+        {% endfor %}
+
+        <form action="/post/{{ post.id }}" method="post" class="comentario-form">
+            <input type="text" name="autor" placeholder="Seu nome" required>
+            <textarea name="corpo" placeholder="Seu comentario" rows="3" required></textarea>
+            <button type="submit">Comentar</button>
+        </form>
+    </main>
+</body>
+</html>
